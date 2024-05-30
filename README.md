@@ -7,33 +7,49 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+Laravel To-Do Aplikacija
+Ovo je jednostavna Laravel aplikacija za upravljanje zadacima (To-Do lista). Aplikacija omogućava korisnicima kreiranje, uređivanje i brisanje zadataka.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Funkcionalnosti
+Kreiranje novih zadataka
+Pregled svih zadataka
+Obilježavanje zadataka kao završenih
+Pretraga zadataka po opisu
+Instalacija
+Klonirajte repozitorij:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+git clone https://github.com/alvuj/laravel-to-do-aplikacija.git
+cd laravel-to-do-aplikacija
+Instalirajte zavisnosti koristeći Composer:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+composer install
+Postavite .env.example na .env i unesite svoju konfiguraciju
 
-## Learning Laravel
+Generirajte aplikacijski ključ (nije nužno):
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+php artisan key:generate
+Pokrenite migracije za kreiranje tablica u bazi podataka:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+php artisan migrate
+Pokrenite razvojni server:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+php artisan serve
+Aplikacija će biti dostupna na http://localhost:8000. ili http://localhost:8000
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
+Struktura Projekta
+app/Http/Controllers/TasksController.php: Kontroler za rukovanje HTTP zahtjevima vezanim za zadatke.
+resources/views/tasks: Blade šabloni za prikazivanje zadataka.
+create.blade.php: Forma za kreiranje novog zadatka.
+index.blade.php: Prikaz liste zadataka sa formom za pretragu i brojem završenih zadataka.
+routes/web.php: Definicija ruta za web aplikaciju.
+database/migrations: Migracije za kreiranje i modifikaciju tablica u bazi podataka.
+2024_05_29_180000_create_tasks_table.php: Kreira tablicu tasks.
+2024_05_29_202357_add_complete_to_tasks_table.php: Dodaje kolonu completed_at u tablicu tasks.
+Konfiguracija
+config/app.php: Glavni konfiguracijski file za Laravel aplikaciju.
+composer.json: Konfiguracijski file za Composer, definira zavisnosti i autoload putanje za projekt.
+Licenca
+Ovaj projekt je licenciran pod MIT licencom. Pogledajte LICENSE file za više informacija.
 
 - **[Vehikl](https://vehikl.com/)**
 - **[Tighten Co.](https://tighten.co)**
