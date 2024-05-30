@@ -11,8 +11,8 @@ use App\Models\Task;
 class TasksController extends Controller
 {
     public function index() {
-        $tasks = Task::orderBy('id', 'DESC')->get();
-        $name_of_task = Task::orderBy('id', 'DESC')->get();
+        $tasks = Task::orderBy('completed_at')->orderBy('id', 'DESC')->get();
+        $name_of_task = Task::orderBy('completed_at')->orderBy('id', 'DESC')->get();
 
         $count = Task::whereNotNull('completed_at')->count();
 
@@ -24,9 +24,6 @@ class TasksController extends Controller
             'name_of_task'=> $name_of_task
         ]);
 
-
-
-
     }
 
     public function create() {
@@ -35,6 +32,7 @@ class TasksController extends Controller
 
    
     public function store(Request $request) {
+       //validacija i što mora biti uključeno
         $request->validate([
             'description' => 'required|string|max:255',
             //ime
@@ -64,8 +62,14 @@ class TasksController extends Controller
 
         return view('tasks.index', ['tasks' => Task::orderBy('id', 'DESC')->get(), 'results' => $results, 'count'=> $count]);
 
-
     }
+
+        public function delete($id){
+            $task = Task::where('id', $id)->first();
+            $task->delete();
+
+            return redirect('/');
+        }
 }
 
 // Objašnjenje funkcija:

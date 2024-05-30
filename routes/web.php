@@ -18,3 +18,4 @@ Route::patch('/tasks/{id}', [TasksController::class, 'update'])->name('tasks.upd
 
 Route::get('/search', [TasksController::class, 'search'])->name('tasks.search');
 
+Route::delete('/tasks/{id}', [TasksController::class, 'delete'])->name('tasks.delete');
